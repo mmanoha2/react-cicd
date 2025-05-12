@@ -1,11 +1,16 @@
 name: Deploy
-on: workflow_dispatch
+
+on:
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone repo
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Debug context
         run: |
           echo "Cloning repo ..."
-          echo "${{toJson(gitub)}}"
+          echo "${{ toJson(github) }}"
